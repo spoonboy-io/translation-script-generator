@@ -1,6 +1,9 @@
 // JavaScript to generate a translation script for use with Morpheus Option Lists
 // Ollie Phillips
 
+
+
+
 const jsonDataTextarea = document.getElementById('jsonData');
 const generateCodeButton = document.getElementById('generateCode');
 const generatedCode = document.getElementById('generatedCode');
@@ -12,6 +15,7 @@ const conditionInput = document.getElementById('condition');
 const whereValueInput = document.getElementById('whereValue');
 
 const sampleJSON = document.getElementById("sampleJSON");
+const clipboardCopy = document.getElementById("clipboardCopy");
 
 // textarea change handler
 jsonDataTextarea.addEventListener('blur', initControls);
@@ -20,6 +24,7 @@ jsonDataTextarea.addEventListener('blur', initControls);
 generateCodeButton.addEventListener('click', generateTranslationScript);
 
 sampleJSON.addEventListener('click', loadSampleJSON);
+clipboardCopy.addEventListener('click', copyIt);
 
 // bit of a fudge to make the key name readable
 let tempParent = '';
@@ -96,7 +101,7 @@ function generateTranslationScript() {
     }
 
     let template = '';
-    let comment = "// Morpheus Translation Script Generator\n// https://generator.spoonboy.io\n\n"
+    let comment = "// Morpheus Translation Script Generator\n// https://spoonboy.io/translation-script-generator/\n\n"
     if (whereFieldInput.value === "") {
         // simple template no filter
         // the output template, currently no if condition to filter
@@ -177,6 +182,12 @@ function isRootKey(obj) {
             }
         }
     }
+}
+
+function copyIt(){
+    let toast = new bootstrap.Toast(document.getElementById("clipboardToast"));
+    navigator.clipboard.writeText(generatedCode.value);
+    toast.show();
 }
 
 // sample data based on modified api/reports response from https://apidocs.morpheusdata.com
