@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morpheus Translation Script Generator</title>
+    <meta name="description"
+          content="This tool will allow you to create a translation script for use in Morpheus option lists. No coding necessary.">
+    <meta name="author" content="Ollie Phillips">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container text-center" style="margin-top:40px;margin-bottom:60px;">
+    <h1>Morpheus Translation Script Generator</h1>
+    <h5 style="margin-top:20px;">
+        This tool will allow you to create a translation script for use in Morpheus option lists. No coding
+        necessary.<br/>
+        Use your JSON data, and select the data required to be presented by the option list. Optionally specify a
+        filter. The translation script will be created ready to use in Morpheus.
+    </h5>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-5">
+            <h5>Paste your JSON data into the text box below</h5>
+            <textarea class="form-control" id="jsonData"></textarea>
+            <a href="javascript:void(0);" id="sampleJSON">Load sample JSON (api/reports)</a>
+        </div>
+        <div class="col-md-2 text-left">
+
+            <h5>Select the keys</h5>
+
+            <div class="box">
+                <label for="nameKey">NAME FIELD</label>
+                <select class="form-select" id="nameKey" disabled>
+                    <option selected>No data</option>
+                </select>
+            </div>
+
+            <div class="box">
+                <label for="valueKey">VALUE FIELD</label>
+                <select class="form-select" id="valueKey" disabled>
+                    <option selected>No data</option>
+                </select>
+            </div>
+
+
+            <h5>Apply a filter condition</h5>
+            <span style="font-size:12px;">Pick a field and and set a condition for it to be included in the data. This can be a value or a dependent input field</span>
+            <div class="box">
+                <label for="valueKey">WHERE</label>
+                <select class="form-select" id="whereField" disabled>
+                    <option selected>No data</option>
+                </select>
+
+                <label for="valueKey">CONDITION</label>
+                <select class="form-select" id="condition" disabled>
+                    <option value="==">Equals</option>
+                    <option value="!=">Not Equals</option>
+                </select>
+
+                <label for="valueKey">VALUE</label>
+                <input type="text" class="form-control" id="whereValue" disabled/>
+                <span style="font-size:12px;">For dependent fields use <span
+                        style="font-family:'Courier New';">input.<i>fieldname</i></span> syntax</span>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="generateCode" disabled>Generate Translation Script
+            </button>
+
+
+        </div>
+        <div class="col-md-5">
+            <h5>Generated JavaScript Code</h5>
+            <!--<pre id="generatedCode"></pre>-->
+            <textarea id="generatedCode" class="form-control"></textarea>
+        </div>
+    </div>
+</div>
+<script src="js/translate.js"></script>
+</body>
+</html>
