@@ -1,9 +1,6 @@
 // JavaScript to generate a translation script for use with Morpheus Option Lists
 // Ollie Phillips
 
-
-
-
 const jsonDataTextarea = document.getElementById('jsonData');
 const generateCodeButton = document.getElementById('generateCode');
 const generatedCode = document.getElementById('generatedCode');
