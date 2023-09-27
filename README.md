@@ -1,5 +1,7 @@
 # Morpheus Translation Script Generator
 
+Try it here [https://spoonboy.io/translation-script-generator/](https://spoonboy.io/translation-script-generator/)
+
 Simple website form which allows the user to paste in their JSON payload, which is parsed for object keys values
 such that the user can pick which keys they wish to use to represent `name` and `value` in their translation script.
 
